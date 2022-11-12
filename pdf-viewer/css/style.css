@@ -1,7 +1,5 @@
-
-
-@media screen and (min-width: 375px) {
-  #comments {
+@media screen and (max-width: 500px) {
+  #comments-mobile {
     width: 100vw;
     height: 100vh;
     z-index: 2;
@@ -12,6 +10,10 @@
     display: flex;
     transition: 0.45s;
     flex-direction: column;
+  }
+
+  #comments-web {
+    display: none;
   }
 
   .comment-header {
@@ -75,20 +77,111 @@
     color: #fff;
     padding: 1rem;
   }
+  
+  .open-comments-button {
+    display: none;
+  } 
 }
 
-@media screen and (max-width: 375px) {
+
+
+@media screen and (min-width: 501px) {
   * {
     margin: 0;
     padding: 0;
   }
+
+  .open-comments-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    bottom: 2%;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    left: 2%;
+    position: fixed;
+    border-radius: 50px;
+    background-color: rgb(35, 112, 213);
+  } 
+
+  #comments-mobile {
+    display: none;
+  }
+
+  #comments-web {
+    animation: grow 0.4s forwards;
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    left: 2%;
+    bottom: 2%;
+    border-radius: 30px;
+    display: none;
+    z-index: 3;
+  }
+
+  .comment-body {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 25px 15px 15px;
+  }
+
+  @keyframes grow {
+    0% {
+      width: 0;
+      height: 0;
+    }
+
+    100% {
+      height: 80vh;
+      width: 30vw;
+    }
+  }
   
+  .comment-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  .top-bar-a {
+    display: none;
+  }
+
+  .top-bar-b {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .top-bar {
     background: #333;
     color: #fff;
-    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 100vw;
   }
-  
+
+  canvas {
+    width:  fit-content;
+    height: 90vh !important;
+    transition: 0.25s;
+  }
   .btn {
     background: coral;
     color: #fff;
@@ -106,11 +199,6 @@
     margin-left: 1rem;
   }
   
-  .error {
-    background: orangered;
-    color: #fff;
-    padding: 1rem;
-  }
 }
 
 

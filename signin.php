@@ -10,13 +10,13 @@
   $client_secret = "7y28Q~bUSBuzTrmT2OOCVYd4_Oba9MvhXKEWWdqy";
 
   // DEVELOPMENT
-  // $callback = "http://localhost/deposis/callback.php"; 
+  $callback = "http://localhost/deposis/callback.php"; 
 
 // EXPOSE
   // $callback = "https://dzite4-ip-152-32-99-99.expose.sh/deposis/callback.php"; 
 
   // PROD
-  $callback = "https://deposis.online/callback.php";
+  // $callback = "https://deposis.online/callback.php";
   $scopes = ["User.Read"];
 
   $microsoft = new Auth($tenant, $client_id, $client_secret, $callback, $scopes);

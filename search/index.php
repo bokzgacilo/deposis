@@ -51,6 +51,8 @@
   
   <script src="../js/jquery.js"></script>
   <script defer src="search-index.js"></script>
+
+  <link rel="shortcut icon" type="image/x-icon" href="../files/admin/deposis-icon.ico" />
   <link rel='stylesheet' href="../css/base.css">
   <link rel='stylesheet' href="../css/search-page.css">
 </head>

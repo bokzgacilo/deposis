@@ -21,20 +21,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    
+    <link rel="shortcut icon" type="image/x-icon" href="../files/admin/deposis-icon.ico" />
     <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="../js/jquery.js"></script>
     <title><?php echo $document_title; ?></title>
   </head>
   <body>
-    <div id='comments'>
-      <div class="comment-header">
-        <p>Comments</p>
-        <i class="close fa-solid fa-x"></i>
+    <div id='comments-mobile'>
+      <div class="comment-body">
+        <div class="comment-header">
+          <p>Comments</p>
+          <i class="close fa-solid fa-x"></i>
+        </div>
       </div>
     </div>
-    <div class="top-bar">
+    <header class="top-bar">
       <div class='top-bar-a'>
         <a href='../search/'>
           Back
@@ -42,6 +44,7 @@
         <i class="message fa-solid fa-message"></i>
       </div>
       <div class='top-bar-b'>
+        
         <button class="btn" id="prev-page">
           <i class="fa fa-arrow-circle-left"></i> Prev Page
         </button>
@@ -51,9 +54,21 @@
         <button class="btn" id="next-page">
           Next Page <i class="fa fa-arrow-circle-right"></i>
         </button>
+        
+      </div>
+    </header>
+
+    <div id='comments-web'>
+      <div class="comment-body">
+        <div class="comment-header">
+          <p>Comments</p>
+          <i class="close-web fa-solid fa-x"></i>
+        </div>
       </div>
     </div>
-
+    <div class="open-comments-button" title='Show comments'>
+      <i class="message fa-solid fa-message fa-xl"></i>
+    </div>
     <canvas id="pdf-render"></canvas>
 
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
@@ -61,10 +76,17 @@
     <script>
       $(document).ready(function(){
         $('.close').click(function(){
-          $('#comments').css('right', '-100vw');
+          $('#comments-mobile').css('right', '-100vw');
         })
         $('.message').click(function(){
-          $('#comments').css('right', '0');
+          $('#comments-mobile').css('right', '0');
+        })
+
+        $('.open-comments-button').click(function(){
+          $('#comments-web').show();
+        })
+        $('.close-web').click(function(){
+          $('#comments-web').hide();
         })
       })
     </script>
