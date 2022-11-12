@@ -1,0 +1,372 @@
+@media only screen and (max-width: 415px) {
+  *{
+    margin: 0%;
+    padding: 0%;
+  }
+
+  body{
+    font-family: segoe;
+    background-color: #fff;
+    background-image: radial-gradient(#e3e3e3 1px, transparent 0);
+    background-size: 12px 12px;
+    background-position: -5px -5px;
+  }
+  
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #11376a;
+    color: white;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    height: 8vh;
+  }
+
+  header > a{
+    text-decoration: none;
+    color: white !important;
+  }
+  
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-right: 50px;
+  }
+  
+  .brand > img {
+    width: 40%;
+    height: auto;
+  }
+  
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  main > p {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    color: #3c3c3c;
+  }
+  
+  form {
+    /* margin-top: 5%; */
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  form > div {
+    width: 100%;
+    margin-bottom: 4%;
+  }
+  
+  form > div > input[type='text'] {
+    width: 100%;
+    border: 1px rgb(215, 215, 215) solid;
+    padding: 5px 5px 5px 15px;
+    border-radius: 5px;
+    outline: 5px none;
+  }
+  
+  form > div > select {
+    width: 100%;
+    border: 1px rgb(215, 215, 215) solid;
+    padding: 5px 5px 5px 15px;
+    border-radius: 5px;
+    outline: 5px none;
+  }
+  
+  form > div > input[type='date'] {
+    width: 100%;
+    border: 1px rgb(215, 215, 215) solid;
+    padding: 5px 5px 5px 15px;
+    border-radius: 5px;
+    outline: 5px none;
+  }
+  
+  form > div > button {
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    background-color: var(--STIblue);
+    border: 1px rgb(215, 215, 215) solid;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 5px none;
+    /* margin-top: 2%; */
+  }
+  
+  .search-proponent {
+    display: none;
+    position: fixed;
+    border: 1px rgb(209, 209, 209) solid;
+    bottom: 0;
+    z-index: 6;
+    background-color: #fff;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    transition: 0.25s;
+  }
+  
+  .result {
+    margin-top: 5%;
+    display: flex;
+    max-height: 40vh;
+    overflow: auto;
+    flex-direction: column;
+  }
+  
+  .author-container {
+    padding: 5px 5px 5px 25px;
+    border-radius: 8px;
+    text-align: center;
+    max-height: 8vh;
+    background-color: rgb(231, 231, 231);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+  } 
+  
+  .result > a > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-right: 5px;
+  }
+  
+  .result > a > button {
+    padding: 2px 5px 2px 5px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(11, 71, 167);
+  }
+  
+  .author-container > input{
+    border: none;
+    outline: none;
+    padding: 2px;
+    background-color: transparent !important;
+  }
+  
+  .message {
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  form > div > p {
+    font-size: 15px;
+    margin-bottom: 1%;
+  }
+  
+  form > div > input[type='text']:focus {
+    width: 100%;
+  }
+  
+}
+
+@media only screen and (min-width: 415px) {
+  *{
+    margin: 0%;
+    padding: 0%;
+  }
+  
+  body{
+    font-family: segoe;
+    background-color: #fff;
+    background-image: radial-gradient(#e3e3e3 1px, transparent 0);
+    background-size: 12px 12px;
+    background-position: -5px -5px;
+  }
+  
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #11376a;
+    color: white;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+    padding: 14px 0 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .brand > img {
+    align-self: center;
+    width: 6%;
+    height: auto;
+  }
+  
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  main > p {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 1%;
+    color: #3c3c3c;
+  }
+  
+  form {
+    margin-top: 1%;
+    width: 40%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  form > div {
+    width: 100%;
+    margin-bottom: 1%;
+  }
+  
+  form > div > input[type='text'] {
+    width: 100%;
+    border: 1px rgb(215, 215, 215) solid;
+    padding: 5px 5px 5px 15px;
+    border-radius: 5px;
+    outline: 5px none;
+    margin-bottom: 2%;
+  }
+  
+  form > div > select {
+    width: 100%;
+    border: 1px rgb(215, 215, 215) solid;
+    padding: 5px 5px 5px 15px;
+    border-radius: 5px;
+    outline: 5px none;
+    margin-bottom: 2%;
+  }
+  
+  form > div > input[type='date'] {
+    width: 100%;
+    border: 1px rgb(215, 215, 215) solid;
+    padding: 5px 5px 5px 15px;
+    border-radius: 5px;
+    outline: 5px none;
+    margin-bottom: 2%;
+  }
+  
+  form > div > button {
+    width: 100%;
+    color: #fff;
+    background-color: var(--STIblue);
+    border: 1px rgb(215, 215, 215) solid;
+    padding: 5px 5px 5px 15px;
+    border-radius: 5px;
+    outline: 5px none;
+    margin-top: 2%;
+  }
+  
+  .search-proponent {
+    display: none;
+    position: fixed;
+    border: 1px rgb(209, 209, 209) solid;
+    top: 20%;
+    right: 30%;
+    background-color: #fff;
+    padding: 10px;
+    width: 30%;
+    border-radius: 5px; 
+  }
+  
+  .result {
+    margin-top: 5%;
+    display: flex;
+    max-height: 40vh;
+    overflow: auto;
+    flex-direction: column;
+  }
+  
+  .author-container {
+    padding: 5px 5px 5px 25px;
+    border-radius: 8px;
+    text-align: center;
+    max-height: 8vh;
+    background-color: rgb(231, 231, 231);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+  } 
+  
+  .result > a > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-right: 5px;
+  }
+  
+  .result > a > button {
+    padding: 2px 5px 2px 5px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(11, 71, 167);
+  }
+  
+  .author-container > input{
+    border: none;
+    outline: none;
+    padding: 2px;
+    background-color: transparent !important;
+  }
+  
+  .message {
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  form > div > p {
+    font-size: 15px;
+    margin-bottom: 1%;
+  }
+  
+  form > div > input[type='text']:focus {
+    width: 100%;
+  }
+  
+}
+
+/* cool input */
+

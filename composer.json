@@ -1,0 +1,9 @@
+{
+    "require": {
+        "adnanhussainturki/microsoft-api-php": "^0.03.0",
+        "phpoffice/phpspreadsheet": "^1.25"
+    },
+    "config": {
+      "platform-check": false
+  }
+}

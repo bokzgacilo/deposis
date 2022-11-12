@@ -1,0 +1,95 @@
+@import url('../bootstrap 5.2/css/bootstrap.min.css');
+@import url('../fontawesome-6.2.0/css/all.min.css');
+
+@font-face {
+  font-family: WorkSans;
+  src: url('../assets/WorkSans.ttf');
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('../assets/Roboto.ttf');
+}
+
+:root {
+  --fontBlack: #3c3c3c;
+  --bgLightGray: #eeeeee;
+  --STIblue-dark: #11376a;
+  --STIblue: #0B5793;
+  --STIyellow: #f4d03f;
+  --lightText: #9c9c9c;
+  --microsoft: #eb3c00;
+}
+
+
+
+*, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto;
+  font-size: 16px;
+  color: #3c3c3c;
+  background-color: var(--bgLightGray);
+
+  background-image: radial-gradient(#e3e3e3 1px, transparent 0);
+  background-size: 12px 12px;
+  background-position: -5px -5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+@keyframes poppop {
+  0% {transform: scale(0.5);}
+  50% {transform: scale(1.2);}
+  100% {transform: scale(1);}
+}
+
+
+@media only screen and (max-width: 415px) {
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 4px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #ffffff; 
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(212, 212, 212); 
+    /* width: 10px; */
+    border-radius: 50px;
+  }
+}
+@media only screen and (min-width: 415px) {
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 50px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User switcher</title>
+  <script src="../js/jquery.js"></script>
+</head>
+<body>
+  <div class="container">
+    
+  </div>
+  <script>
+    function getall(){
+      $.ajax({
+        type: 'get',
+        url: 'getUser.php',
+        success: function(response){
+          $('.container').html(response);
+        }
+      })
+    }
+
+    function switcher(id){
+      $.ajax({
+        type: 'post',
+        url: 'switch.php',
+        data: {
+          table: id
+        },
+        success: function(response){
+          getall();
+          console.log(response)
+        }
+      })
+    }
+
+    $(document).ready(function(){
+      getall();
+    })
+  </script>
+</body>
+</html>
