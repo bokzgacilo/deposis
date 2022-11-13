@@ -12,6 +12,78 @@
     flex-direction: column;
   }
 
+  .comment-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    height: 100vh;
+  }
+
+  #commentForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #commentForm > input {
+    width: 80%;
+    font-size: 14px;
+    padding: 10px 10px 10px 25px;
+    border: none;
+    outline: none;
+    background-color: rgb(234, 234, 234);
+  }
+
+
+  #commentForm > button {
+    width: 20%;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: rgb(37, 0, 183);
+    font-size: 14px;
+    padding: 10px;
+    font-weight: 600;
+    
+  }
+
+  .comment {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .comment-list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    gap: 15px;
+    max-height: 80vh;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .comment-input {
+    margin-top: auto;
+  }
+
+  .commentor > img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 50px;
+  }
+
+  .details > p:first-of-type{
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .details > p:last-of-type{
+    font-size: 13px;
+  }
+
   #comments-web {
     display: none;
   }
@@ -110,6 +182,10 @@
   #comments-mobile {
     display: none;
   }
+
+  
+
+  
 
   #comments-web {
     animation: grow 0.4s forwards;

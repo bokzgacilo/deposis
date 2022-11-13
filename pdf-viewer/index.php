@@ -5,13 +5,14 @@
   $target = $_GET['file'];
   $document_url = '';
   $document_title = '';
+  $document_comments = '';
 
   $result = $conn -> query("SELECT * FROM approved WHERE unique_id='$target'");
   while($row = $result -> fetch_array()){
     $document_title = $row['title'];
     $document_url = $row['document_url'];
+    $document_comments = $row['comments'];
   }
-  $conn -> close();
 ?>
 
 
@@ -33,6 +34,15 @@
         <div class="comment-header">
           <p>Comments</p>
           <i class="close fa-solid fa-x"></i>
+        </div>
+        <div class="comment-list">
+          <!-- Insert comments here. -->
+        </div>
+        <div class="comment-input">
+          <div id='commentForm'>
+            <input type="text" id="comment" value='' placeholder="Post comment">
+            <button id='<?php echo $target;?>' class="post">Post</button>
+          </div>
         </div>
       </div>
     </div>
@@ -74,17 +84,53 @@
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     
     <script>
+      function getAllComment(){
+        $.ajax({
+          type: 'get',
+          url: 'getComments.php',
+          data: {
+            comments: '<?php echo $document_comments;?>'
+          },
+          success: function(response){
+            $('.comment-list').html(response);
+            $('#comment').val('');
+          }
+        })
+      }
+
       $(document).ready(function(){
+
+        $('.post').click(function(){
+          var comment_value = $('#comment').val();
+          if(comment_value == ''){
+            console.log('no value.');
+          }else {
+            $.ajax({
+              type: 'post',
+              url: 'comment.php',
+              data: {
+                comment: comment_value,
+                file: $(this).attr('id')
+              },
+              success: getAllComment()
+            })
+          }
+        })  
+
         $('.close').click(function(){
           $('#comments-mobile').css('right', '-100vw');
+          $('.comment-list').html('');
         })
+
         $('.message').click(function(){
           $('#comments-mobile').css('right', '0');
+          getAllComment();
         })
 
         $('.open-comments-button').click(function(){
           $('#comments-web').show();
         })
+
         $('.close-web').click(function(){
           $('#comments-web').hide();
         })
@@ -188,3 +234,7 @@
     </script>
   </body>
 </html>
+
+<?php
+  $conn -> close();
+?>
