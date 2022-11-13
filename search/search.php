@@ -11,7 +11,7 @@
   $counter = $result -> num_rows;
 
   if($counter != 0){
-    echo "<p class='mt-2'>We found $counter results.</p>";
+    // echo "<p class='mt-2'>We found $counter results.</p>";
   }
   if(($result -> num_rows) > 0){
     while($thesis = $result -> fetch_array()){

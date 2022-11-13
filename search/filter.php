@@ -42,6 +42,10 @@
   if(empty($keyword) && empty($department) && empty($date_from) && empty($date_to)){
     $sql = "SELECT * FROM approved";
   }
+
+  if(!empty($keyword) && !empty($department) && empty($date_from) && empty($date_to)){
+    $sql = "SELECT * FROM approved WHERE title LIKE '%$keyword%' AND department LIKE '%$department%'";
+  }
   $result = $conn -> query($sql);
   if(($result -> num_rows) > 0){
     while($thesis = $result -> fetch_array()){

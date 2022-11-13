@@ -64,7 +64,7 @@
         <i class="close fa-solid fa-xmark"></i>
       </div>
       <form class="filter-form">
-        <input type="text" id='keyword' value="" placeholder="Keyword">
+        <input type="text" id='keyword' name='keyword' value="" placeholder="Keyword">
         <p>Select Department: </p>
         <select id='department'>
           <option value=''>All</option>
