@@ -1,5 +1,4 @@
 <?php
-
 // PRODUCTION
 $server = "localhost";
 $username = "u228124087_deposis";
