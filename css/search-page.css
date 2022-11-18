@@ -1066,9 +1066,10 @@
     to {bottom: 0; opacity: 0;}
   }
 
-  .header-mobile, .upload-button-mobile, .footer-mobile {
+  #filter, .header-mobile, .upload-button-mobile, .footer-mobile {
     display: none !important;
   }
+  
 }
 
 /* Global */

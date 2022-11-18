@@ -169,19 +169,4 @@ $(document).ready(function(){
   $('.close').click(function(){
     $(this).parent().parent().parent().hide();
   })
-
-  // $('.open-thesis').click(function(){
-  //   var target_url = $(this).attr('id');
-
-  //   window.location.href = "../pdf-viewer/index.php?file=" + target_url;
-  //   // let screensize = (window.screen.availHeight);
-  //   //   if(screensize <= 736){
-  //   //     var target_url = $(this).attr('title')
-  //   //     window.location.href = "../" + target_url;
-  //   //     // $(location).attr("href", "../" + target_url);
-  //   //   }else {
-  //   //     var target = $(this).parent().attr('title');
-  //   //     $(location).attr("href", "../thesis/view.php?thesis=" + target);
-  //   //   }
-  // })
 })
