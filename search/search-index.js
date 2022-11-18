@@ -29,6 +29,9 @@ function closeUploadForm(){
 
 function openAccountSidebar() {
   document.getElementById("account-sidebar").style.right = "0";
+  closeNotification();
+  closeBookmark();
+  $('.filter-close').click();
 }
 
 function openFilter() {
@@ -38,12 +41,15 @@ function openFilter() {
 function openBookmark() {
   document.getElementById("bookmark-sidebar").style.right = "0";
   closeAccountSidebar();
+  closeNotification();
+  $('.filter-close').click();
 }
 
 function openNotification() {
   document.getElementById("notification-sidebar").style.right = "0";
   closeAccountSidebar();
   closeBookmark();
+  $('.filter-close').click();
 }
 
 function closeAccountSidebar() {
@@ -69,8 +75,7 @@ function showBookmark(){
 
 $(document).ready(function(){
   showBookmark();
-  
-  
+
   $('.upload-button').click(function(){
     window.location.href = "../upload";
   })
@@ -147,18 +152,21 @@ $(document).ready(function(){
     })
 
     event.preventDefault();
-    
   })
 
   $('.filter-button').click(function(){
     $("#filter").css('display', 'flex');
+
     $(".filter-content").animate({
       bottom: 0
     }, 200)
+
+    closeAccountSidebar();
+    closeBookmark();
+    closeNotification();
   })
 
   $('.filter-close').click(function(){
-    
     $(".filter-content").animate({
       bottom: '-100%'
     }, 200, function(){
@@ -169,4 +177,15 @@ $(document).ready(function(){
   $('.close').click(function(){
     $(this).parent().parent().parent().hide();
   })
+
+  $('#filter').bind('swipedown', closeFilter);
+  
+  function closeFilter(event) { 
+    alert()
+    // $(".filter-content").animate({
+    //   bottom: '-100%'
+    // }, 200, function(){
+    // $("#filter").css('display', 'none');
+    // })
+  }  
 })

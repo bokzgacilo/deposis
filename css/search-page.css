@@ -253,7 +253,7 @@
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.486);
-    z-index: 12;
+    z-index: 11;
     position: fixed;
     bottom: 0;
     display: none;
@@ -761,7 +761,7 @@
     height: 100%;
     width: 300px;
     position: fixed;
-    z-index: 11;
+    z-index: 12;
     top: 0;
     right: -300px;
     background-color: #fff;

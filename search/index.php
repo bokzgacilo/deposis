@@ -49,6 +49,7 @@
   
   <script src="../js/jquery.js"></script>
   <script defer src="search-index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/2.0.0/jquery.mobile-events.min.js"> </script>
 
   <link rel="shortcut icon" type="image/x-icon" href="../files/admin/deposis-icon.ico" />
   <link rel='stylesheet' href="../css/base.css">
