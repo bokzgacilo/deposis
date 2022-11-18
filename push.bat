@@ -1,5 +1,2 @@
-git add .
-
-git reset -- connection.php
-git reset -- signin.php
+git add . :!connection.php
 
