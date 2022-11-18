@@ -222,16 +222,16 @@
           <form class="search-form">
             <i class="fa-solid fa-magnifying-glass "></i>
             <input type="search" id='main-search' value='' placeholder='Start searching..'>
-            <i class="filter-button fa-solid fa-list fa-xl"></i>
+            <!-- <i class="filter-button fa-solid fa-list fa-xl"></i> -->
           </form>
         </div>
       </div>
+
       <div class="header-web">
         <a class="brand" href="../"><img src='../assets/deposis-white.png'></a>
         <form class="search-form">
           <i class="fa-solid fa-magnifying-glass "></i>
           <input type="search" id='main-search' name='main-search' value='' placeholder='Start searching..'>
-          <i class="filter-button fa-solid fa-list fa-xl"></i>
         </form>
         <div class="action-buttons">
         <?php
@@ -265,6 +265,12 @@
       
       
     </header>
+    <!-- Footer for Mobile View -->
+    <div class="footer-mobile">
+      <i onclick='openNotification()' class="fa-solid fa-bell fa-xl"></i>
+      <i class="filter-button fa-solid fa-list fa-xl"></i>
+      <i onclick='openBookmark()' class='fa-solid fa-book-bookmark fa-xl'></i>
+    </div>
     <div class="wrapper">
       <aside>
       </aside>

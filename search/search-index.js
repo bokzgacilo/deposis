@@ -29,25 +29,29 @@ function closeUploadForm(){
 
 function openAccountSidebar() {
   document.getElementById("account-sidebar").style.right = "0";
+  
 }
 
 function openBookmark() {
   document.getElementById("bookmark-sidebar").style.right = "0";
+  closeAccountSidebar();
 }
 
 function openNotification() {
   document.getElementById("notification-sidebar").style.right = "0";
+  closeAccountSidebar();
+  closeBookmark();
 }
 
 function closeAccountSidebar() {
-  document.getElementById("account-sidebar").style.right = "-300px";
+  document.getElementById("account-sidebar").style.right = "-100%";
 }
 function closeBookmark() {
-  document.getElementById("bookmark-sidebar").style.right = "-300px";
+  document.getElementById("bookmark-sidebar").style.right = "-100%";
 }
 
 function closeNotification() {
-  document.getElementById("notification-sidebar").style.right = "-300px";
+  document.getElementById("notification-sidebar").style.right = "-100%";
 }
 
 function showBookmark(){
