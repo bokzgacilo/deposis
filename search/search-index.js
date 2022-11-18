@@ -147,7 +147,7 @@ $(document).ready(function(){
       },
       success: function(response){
         $('.thesis-result-container').html(response);
-        console.log('1');
+        $('#main-search').blur();
       }
     })
 
