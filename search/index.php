@@ -3,9 +3,7 @@
   include('../connection.php');
 
   $usertable = '';
-  
-  
-
+    
   if(isset($_SESSION['table'])){
     $usertable = $_SESSION['table'];
   }else {

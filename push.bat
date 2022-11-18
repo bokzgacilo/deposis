@@ -1,2 +1,2 @@
-git add . :!connection.php
+git add . :!connection.php :!signin.php
 
