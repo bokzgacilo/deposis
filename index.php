@@ -12,7 +12,6 @@
   <meta name="description" content="Online search engine for thesis of STI Global City.">
   <title>Deposis - Sign In</title>
   <script src="bootstrap 5.2/js/bootstrap.min.js"></script>
-  <script defer src="assets/friconix.js"> </script>
   <script defer src="js/script.js"> </script>
   <link rel="shortcut icon" type="image/x-icon" href="files/admin/deposis-icon.ico" />
   <link rel="stylesheet" href="css/base.css">

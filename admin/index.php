@@ -33,6 +33,53 @@
   <link rel='stylesheet' href='style.css'>
 </head>
 <body>
+  <div id="single-data" class="mod">
+    <div class="mod-content">
+      <div class="mod-header">
+        <p>Add Single Data</p>
+        <i class="close fa-solid fa-x"></i>
+      </div>
+      <form action="add-single-data.php" method="post" enctype="multipart/form-data" class="mod-message">
+        <select name='target' class="form form-control">
+          <option>Students</option>
+          <option>Faculty</option>
+        </select>
+        <input type='email' name='email' class="mt-2 form form-control" placeholder='Email' required>
+        <input type='text' name='name' class="mt-2 form form-control" placeholder='Fullname (Dela Cruz, Juan)' required>
+        <select name='department' class="mt-2 form form-control">
+          <option>IT</option>
+          <option>BACOMM</option>
+          <option>DBAA</option>
+          <option>THM</option>
+          <option>BCAA</option>
+          <option>CPE</option>
+          <option>SHS</option>
+        </select>
+        <button class="mt-2 btn btn-primary" type="submit" name='submit'>Add</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="report_modal" class="mod">
+    <div class="mod-content">
+      <div class="mod-header">
+        <p>Generate Report</p>
+        <i class="close fa-solid fa-x"></i>
+      </div>
+      <form action="generate_report.php" method="post" enctype="multipart/form-data" class="mod-message">
+        <select class="form form-control" name='reports' id="reports">
+          <option value='1'>List of Theses</option>
+          <option value='2'>List of Faculty</option>
+          <option value='3'>List of Coordinators</option>
+          <option value='4'>List of Students</option>
+          <option value='5'>List of Representative</option>
+          <option value='6'>Generate login report</option>
+        </select>
+        <button class="mt-2 btn btn-primary" type="submit" name='submit'>Download Report</button>
+      </form>
+    </div>
+  </div>
+
   <div id="importModal" class="mod">
     <div class="mod-content">
       <div class="mod-header">
@@ -73,11 +120,11 @@
       <?php
         if($_SESSION['role'] != 'Coordinator'){
           echo "
-          <a>
-            <i class='generate-report fa-solid fa-file-export me-2'></i>
+          <a class='generate-report' >
+            <i class=' fa-solid fa-file-export me-2'></i>
             <span id='button-text'>Generate Report</span>
           </a>
-          <a>
+          <a class='add-single-data'>
             <i class='fa-solid fa-plus me-2'></i>
             <span id='button-text'>Add Single Data (Faculty)</span>
           </a>

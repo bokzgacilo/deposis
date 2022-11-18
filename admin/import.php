@@ -1,6 +1,7 @@
 <?php
   require_once '../vendor/autoload.php';
   include('../connection.php');
+  include('../emailer.php');
 
   use PhpOffice\PhpSpreadsheet\Spreadsheet;
   use PhpOffice\PhpSpreadsheet\Reader\Csv;
@@ -39,9 +40,10 @@
             if($row = $checker -> fetch_array()){
               echo $name . ' was already existing. <br>';
             }else {
-
-              $message = "Account Created%%" . date("Y-m-d");
-              $sql = "INSERT INTO $table (email, name, department, notifications) VALUES('$email', '$name', '$dept', '$message')";
+              sendRegistrationEmail($email, $name);
+              $account_created = date('Y-m-d H:i:s');
+              $message = "Account Created%%" . date('Y-m-d H:i:s');
+              $sql = "INSERT INTO $table (email, name, department, account_created, notifications) VALUES('$email', '$name', '$dept', '$account_created', '$message')";
 
               if (mysqli_query($conn, $sql)) {
                 echo $name . ' was added. <br>';

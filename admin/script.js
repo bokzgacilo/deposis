@@ -3,7 +3,27 @@ let param = searchParams.get('page')
 
 $(document).ready(function(){
   showTableData();
+  $('.generate').click(function(){
+    let report = $("#reports").val();
 
+    $.ajax({
+      type: 'post',
+      url: 'generate_report.php',
+      data: {
+        report: report
+      },
+      success: function(response){
+        console.log(response);
+      }
+    })
+  })
+
+  $('.add-single-data').click(function(){
+    $('#single-data').show();
+  })
+  $('.generate-report').click(function(){
+    $('#report_modal').show();
+  })
   $('.import-faculty').click(function(){
     $('#importModal').show();
   })
