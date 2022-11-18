@@ -1,4 +1,55 @@
 @media screen and (max-width: 500px) {
+  #rate-modal {
+    background-color: #000000d1;
+    height: 100vh;
+    width: 100vw;
+    z-index: 5;
+    position: fixed;
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rate-modal {
+    margin-top: 5%;
+    width: 30vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rate-modal-header {
+    background-color: var(--STIblue-dark);
+    padding: 12px 20px 12px 12px;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .rate-modal-body {
+    padding: 12px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    align-items: center;
+  }
+
+  .star-rating {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .rate-modal-footer {
+    padding: 12px;
+    color: #fff;
+    background-color: var(--STIblue-dark);
+  }
+
   #comments-mobile {
     width: 100vw;
     height: 100vh;
@@ -56,18 +107,17 @@
   .comment-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    height: 70vh;
+    gap: 12px;
+    max-height: 50vh;
     overflow: scroll;
     overflow-x: hidden;
   }
 
   .comment-input {
-    margin-top: auto;
-    height: 20vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    gap: 15px;
+    padding: 10px;
   }
 
   .commentor > img {
@@ -129,32 +179,25 @@
     align-items: center;
   }
   
-  .button {
-    background: coral;
+  .btn {
+    background-color: coral;
     color: #fff;
     border: none;
     outline: none;
     padding: 10px;
     cursor: pointer;
     font-size: 12px;
-    /* padding: 0.7rem 2rem; */
   }
-  
-  .btn:hover {
-    opacity: 0.9;
-  }
-  
+
   .page-info {
     margin-left: 1rem;
   }
   
-  .error {
-    background: orangered;
-    color: #fff;
-    padding: 1rem;
-  }
-  
   .open-comments-button {
+    display: none;
+  } 
+
+  .open-rate-button {
     display: none;
   } 
 }
@@ -175,6 +218,22 @@
     width: 60px;
     height: 60px;
     bottom: 2%;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    left: 2%;
+    position: fixed;
+    border-radius: 50px;
+    background-color: rgb(35, 112, 213);
+  }
+
+  .open-rate-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    bottom: 12%;
     color: rgb(255, 255, 255);
     cursor: pointer;
     left: 2%;
@@ -268,7 +327,6 @@
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 0.7rem 2rem;
   }
   
   .btn:hover {
@@ -279,6 +337,56 @@
     margin-left: 1rem;
   }
   
+  #rate-modal {
+    background-color: #000000d1;
+    height: 100vh;
+    width: 100vw;
+    z-index: 5;
+    position: fixed;
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rate-modal {
+    margin-top: 5%;
+    width: 30vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rate-modal-header {
+    background-color: var(--STIblue-dark);
+    padding: 12px 20px 12px 12px;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .rate-modal-body {
+    padding: 12px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    align-items: center;
+  }
+
+  .star-rating {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .rate-modal-footer {
+    padding: 12px;
+    color: #fff;
+    background-color: var(--STIblue-dark);
+  }
 }
 
 

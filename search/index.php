@@ -325,7 +325,30 @@
                     Save
                   </a>";
                 }
+                $average = $thesis['average'];
+                $rate_count = $thesis['rate_count'];
+                $percentile = (($average / 5) * 100);
                 echo"
+                <div class='rate-holder'>
+                  <p class='pub_date'>Average Rate: ".number_format($average, 2)." ($percentile%)</p>
+                  <div class='rating'>
+                    <div class='rating-upper' style='width:".number_format($percentile)."%'>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                    <div class='rating-lower'>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                        <span>★</span>
+                    </div>
+                  </div>
+                  <p>Number of rates: $rate_count</p>
+                </div>
                 <p class='pub_date'>".$thesis['department'].", ".$thesis['publication_date']."</p>
               </div>";
               }
@@ -333,6 +356,9 @@
             }
           ?> 
         </div>
+        <style>
+          
+        </style>
       </article>
     </div>
   </main>

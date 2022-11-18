@@ -40,8 +40,18 @@
         </div>
         <div class="comment-input">
           <div id='commentForm'>
+            <div class="star-rating">
+              <input type="radio" value="1" name="rate">1
+              <input type="radio" value="2" name="rate">2
+              <input type="radio" value="3" name="rate">3
+              <input type="radio" value="4" name="rate">4
+              <input type="radio" value="5" name="rate" checked>5
+            </div>
+            <button class="btn btn-primary cast-rate">Rate</button>
+          </div>
+          <div id='commentForm'>
             <input type="text" id="comment" value='' placeholder="Post comment">
-            <button id='<?php echo $target;?>' class="post">Post</button>
+            <button id='<?php echo $target;?>' class="btn btn-primary post">Post</button>
           </div>
         </div>
       </div>
@@ -76,13 +86,36 @@
         </div>
       </div>
     </div>
-    <div class="open-comments-button" title='Show comments'>
+
+    <div id="rate-modal">
+      <div class="rate-modal">
+        <div class="rate-modal-header">
+          <p>Rate</p>
+          <i class="close-rate fa-solid fa-x"></i>
+        </div>
+        <div class="rate-modal-body">
+          <div class="star-rating">
+            <input type="radio" value="1" name="rate">1
+            <input type="radio" value="2" name="rate">2
+            <input type="radio" value="3" name="rate">3
+            <input type="radio" value="4" name="rate">4
+            <input type="radio" value="5" name="rate" checked>5
+          </div>
+        </div>
+        <div class="rate-modal-footer">
+          <button class="btn btn-primary cast-rate">Rate</button>
+        </div>
+      </div>
+    </div>
+    <div class="open-rate-button" title='Show comments'>
+      <i class="fa-solid fa-star fa-xl"></i>
+    </div>
+
+    <div class="open-comments-button" title='Show rate  '>
       <i class="message fa-solid fa-message fa-xl"></i>
     </div>
     <canvas id="pdf-render"></canvas>
-
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-    
     <script>
       function getAllComment(){
         $.ajax({
@@ -99,6 +132,34 @@
       }
 
       $(document).ready(function(){
+        $('.open-rate-button').click(function(){
+          $('#rate-modal').css('display', 'flex');
+        })
+        $('.close-rate').click(function(){
+          $('#rate-modal').css('display', 'none');
+        })
+
+        $('.cast-rate').click(function(){
+          let ratebox = $("input[name='rate']:checked").val();
+
+          if(ratebox == ''){
+            alert('Please cast your rate')
+          }else {
+            $.ajax({
+              type: 'post',
+              url: 'rate.php',
+              data: {
+                rate: ratebox,
+                file: <?php echo $target; ?>
+              },
+              success: function(response){
+                console.log(response);
+                $('#rate-modal').css('display', 'none');
+              }
+            })
+          }
+        })
+
 
         $('.post').click(function(){
           var comment_value = $('#comment').val();
