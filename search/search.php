@@ -18,7 +18,7 @@
       $authors =  explode("%%", $thesis['authors']);
 
       echo "
-      <div class='mt-2 thesis'>
+      <div class='thesis'>
       <div >
         <a class='thesis-head' title='".$thesis['title']."' onclick='openThesis(this.title)' >".$thesis['title']."</a>
       </div>
@@ -55,7 +55,7 @@
     </div>";
     }
   }else {
-    echo "<p class='mt-2'>No results found for '$keyword'</p>";
+    echo "<p class='p-2 '>No results found for '$keyword'</p>";
   }
   
 

@@ -29,7 +29,10 @@ function closeUploadForm(){
 
 function openAccountSidebar() {
   document.getElementById("account-sidebar").style.right = "0";
-  
+}
+
+function openFilter() {
+  document.getElementById("filter").style.bottom = "0";
 }
 
 function openBookmark() {
@@ -66,6 +69,7 @@ function showBookmark(){
 
 $(document).ready(function(){
   showBookmark();
+  
   
   $('.upload-button').click(function(){
     window.location.href = "../upload";
@@ -147,7 +151,19 @@ $(document).ready(function(){
   })
 
   $('.filter-button').click(function(){
-    $("#filter").show();
+    $("#filter").css('display', 'flex');
+    $(".filter-content").animate({
+      bottom: 0
+    }, 200)
+  })
+
+  $('.filter-close').click(function(){
+    
+    $(".filter-content").animate({
+      bottom: '-100%'
+    }, 200, function(){
+    $("#filter").css('display', 'none');
+    })
   })
 
   $('.close').click(function(){

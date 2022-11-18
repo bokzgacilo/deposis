@@ -55,11 +55,11 @@
   <link rel='stylesheet' href="../css/search-page.css">
 </head>
 <body>
-  <div id="filter" class="mod">
-    <div class="mod-content">
-      <div class="mod-header">
+  <div id="filter">
+    <div class="filter-content">
+      <div class="filter-header">
         <p>Filter</p>
-        <i class="close fa-solid fa-xmark"></i>
+        <i class="filter-close fa-solid fa-xmark"></i>
       </div>
       <form class="filter-form">
         <input type="text" id='keyword' name='keyword' value="" placeholder="Keyword">
