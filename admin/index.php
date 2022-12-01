@@ -33,6 +33,11 @@
   <link rel='stylesheet' href='style.css'>
 </head>
 <body>
+  <div class="viewport-checker">
+    <img src="../assets/deposis.png" class="deposis">
+    <p>Admin Panel is available on web desktop view only.</p>
+    <a href='../'>Back to search</a>
+  </div>
   <div id="single-data" class="mod">
     <div class="mod-content">
       <div class="mod-header">
