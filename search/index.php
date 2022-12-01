@@ -17,7 +17,22 @@
     $query = $conn -> query($selectUserDetails);
     $userArray = '';
     while($user = $query -> fetch_array()){
-      $userArray = [$user['profile_picture_url'], $user['saved_thesis'], $user['name']];
+
+      if($_SESSION['role'] == 'Proponent' || $_SESSION['role'] == 'Representative'){
+        $userArray = [
+          $user['profile_picture_url'], 
+          $user['saved_thesis'],
+          $user['name'], 
+          $user['unique_id']
+        ];
+      }else {
+        $userArray = [
+          $user['profile_picture_url'], 
+          $user['saved_thesis'],
+          $user['name']
+        ];
+      }
+      
       $_SESSION['name'] = $userArray['2'];
     }
 
@@ -56,6 +71,145 @@
   <link rel='stylesheet' href="../css/search-page.css">
 </head>
 <body>
+  <div id='my-thesis' class='mod'>
+    <div class="mod-content-thesis">
+      <div class="mod-header-thesis">
+        <p>My Thesis</p>
+        <i class="close fa-solid fa-xmark"></i>
+      </div>
+      <div class="mod-message-thesis">
+        <table>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Department</th>
+            <th>Authors</th>
+            <th>Publication Date</th>
+            <th>Uploaded Date</th>
+            <th>Status</th>
+          </tr>
+          <?php 
+
+          $tables = ['pending', 'approved'];
+
+          foreach ($tables as $item) {
+            $checkmythesis = "SELECT * FROM {$item} WHERE unique_id='$userArray[3]'";
+            $checkThesis = $conn -> query($checkmythesis);
+            if(($checkThesis -> num_rows) > 0){
+              $selectOwnThesis = "SELECT * FROM {$item} WHERE unique_id='$userArray[3]'";
+              $ownThesis = $conn -> query($selectOwnThesis);
+              while($own = $ownThesis -> fetch_array()){
+                echo "<tr>
+                  <td><a href='../".$own['document_url']."'>View Document</td>
+                  <td>".$own['title']."</td>
+                  <td>".$own['department']."</td>";
+
+                  $comember = $own['authors'];
+                  $comember_exploded = explode('%%', $comember);
+
+                  echo "<td class='comembers'>";
+                  foreach($comember_exploded as $author){
+                    $authorProfilePicture = $conn -> query("SELECT * FROM students WHERE name='$author'");
+                    $auth_profile_picture = '';
+                    
+                    if(($authorProfilePicture -> num_rows) > 0){
+                      while($pp = $authorProfilePicture -> fetch_array()){ 
+                        $auth_profile_picture = $pp['profile_picture_url'];
+                      }
+                    }else {
+                      $auth_profile_picture = 'files/default-user.png';
+                    }
+                    echo "<a>
+                      <img src='../$auth_profile_picture'>
+                      <p>$author</p>
+                    </a> ";
+                  }
+
+                  echo "</td>";
+                echo "<td>".$own['publication_date']."</td>
+                  <td>".$own['uploaded_date']."</td>
+                  <td><p class='{$item}'>".$own['status']."</p></td>
+                </tr>";
+              }
+            }
+          }
+          
+
+          
+        ?>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id='my-thesis-mobile'>
+    <div class="mod-content-thesis">
+      <div class="mod-header-thesis">
+        <p>My Thesis</p>
+        <i class="close fa-solid fa-xmark"></i>
+      </div>
+      <div class="mod-message-thesis">
+        <table>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Department</th>
+            <th>Authors</th>
+            <th>Publication Date</th>
+            <th>Uploaded Date</th>
+            <th>Status</th>
+          </tr>
+          <?php 
+
+          $tables = ['pending', 'approved'];
+
+          foreach ($tables as $item) {
+            $checkmythesis = "SELECT * FROM {$item} WHERE unique_id='$userArray[3]'";
+            $checkThesis = $conn -> query($checkmythesis);
+            if(($checkThesis -> num_rows) > 0){
+              $selectOwnThesis = "SELECT * FROM {$item} WHERE unique_id='$userArray[3]'";
+              $ownThesis = $conn -> query($selectOwnThesis);
+              while($own = $ownThesis -> fetch_array()){
+                echo "<tr>
+                  <td><a href='../".$own['document_url']."'>View Document</td>
+                  <td>".$own['title']."</td>
+                  <td>".$own['department']."</td>";
+
+                  $comember = $own['authors'];
+                  $comember_exploded = explode('%%', $comember);
+
+                  echo "<td class='comembers'>";
+                  foreach($comember_exploded as $author){
+                    $authorProfilePicture = $conn -> query("SELECT * FROM students WHERE name='$author'");
+                    $auth_profile_picture = '';
+                    
+                    if(($authorProfilePicture -> num_rows) > 0){
+                      while($pp = $authorProfilePicture -> fetch_array()){ 
+                        $auth_profile_picture = $pp['profile_picture_url'];
+                      }
+                    }else {
+                      $auth_profile_picture = 'files/default-user.png';
+                    }
+                    echo "<a>
+                      <img src='../$auth_profile_picture'>
+                      <p>$author</p>
+                    </a> ";
+                  }
+
+                  echo "</td>";
+                echo "<td>".$own['publication_date']."</td>
+                  <td>".$own['uploaded_date']."</td>
+                  <td><p class='{$item}'>".$own['status']."</p></td>
+                </tr>";
+              }
+            }
+          }
+        ?>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <div id="filter">
     <div class="filter-content">
       <div class="filter-header">
@@ -128,6 +282,62 @@
       </div>
       <div class="bookmark-holder">
       </div>
+      
+      <div class="mt-4 my-saved-thesis-mobile">
+          <h6>My Thesis</h6>
+          <div class="my-thesis">
+            <?php
+              $tables = ['pending', 'approved'];
+
+              foreach ($tables as $item) {
+                $checkmythesis = "SELECT * FROM {$item} WHERE unique_id='$userArray[3]'";
+                $checkThesis = $conn -> query($checkmythesis);
+                if(($checkThesis -> num_rows) > 0){
+                  $selectOwnThesis = "SELECT * FROM {$item} WHERE unique_id='$userArray[3]'";
+                  $ownThesis = $conn -> query($selectOwnThesis);
+                  while($own = $ownThesis -> fetch_array()){
+                    echo "
+                    <h6>".$own['title']."</h6>
+                    <p>Authors</p>
+                    <div class='comembers-mobile'>";
+                    $comember = $own['authors'];
+                    $comember_exploded = explode('%%', $comember);
+                    foreach($comember_exploded as $author){
+                      $authorProfilePicture = $conn -> query("SELECT * FROM students WHERE name='$author'");
+                      $auth_profile_picture = '';
+                      
+                      if(($authorProfilePicture -> num_rows) > 0){
+                        while($pp = $authorProfilePicture -> fetch_array()){ 
+                          $auth_profile_picture = $pp['profile_picture_url'];
+                        }
+                      }else {
+                        $auth_profile_picture = 'files/default-user.png';
+                      }
+                      echo "<a class='member'>
+                        <img src='../$auth_profile_picture'>
+                        <p>$author</p>
+                      </a> ";
+                    }
+                    
+                    echo "
+                    </div>
+                   
+                    <p>Department</p>
+                    <h6>".$own['department']."</h6>
+
+                    <p>Publication Date</p>
+                    <h6>".$own['publication_date']."</h6>
+                    
+                    <a href='../".$own['document_url']."'>View Document</a>
+                    <p class='{$item}'>".$own['status']."</p> ";
+                  }
+                }
+              }
+            ?>
+          </div>
+      </div>
+      
+
     </div>
 
     <div id="notification-sidebar" class="sidebar">
@@ -175,11 +385,13 @@
           </a>";
           }
           if($_SESSION['role'] == 'Representative'){
-            echo 
-            "<a class='upload-button-mobile acct-action-button'>
-              <i class='fa-duotone fa-arrow-up-from-bracket'></i>
-              <p>Upload Thesis</p>
-            </a>";
+            if($userArray[3] == 0){
+              echo 
+              "<a class='upload-button-mobile acct-action-button'>
+                <i class='fa-duotone fa-arrow-up-from-bracket'></i>
+                <p>Upload Thesis</p>
+              </a>";
+            }
           }
         ?>
         
@@ -201,7 +413,7 @@
         </a>
       </div>
       <div class="about">
-        <p>Deposis v10.25.2022-70%</p>
+        <p>Deposis v11.27.2022-95%</p>
       </div>
     </div>
     <header>
@@ -223,16 +435,15 @@
           <form class="search-form">
             <i class="fa-solid fa-magnifying-glass "></i>
             <input type="search" id='main-search' value='' placeholder='Start searching..'>
-            <!-- <i class="filter-button fa-solid fa-list fa-xl"></i> -->
           </form>
         </div>
       </div>
 
       <div class="header-web">
         <a class="brand" href="../"><img src='../assets/deposis-white.png'></a>
-        <form class="search-form">
+        <form class="search-form-web">
           <i class="fa-solid fa-magnifying-glass "></i>
-          <input type="search" id='main-search' name='main-search' value='' placeholder='Start searching..'>
+          <input type="search" id='main-search-web' value='' placeholder='Start searching..'>
         </form>
         <div class="action-buttons">
         <?php
@@ -243,12 +454,20 @@
         <?php
           if(isset($_SESSION['role'])){
             if($_SESSION['role'] == 'Representative'){
-              echo 
-              "<button class='upload-button btn btn-light'>
-                <i class='fa-duotone fa-arrow-up-from-bracket me-2'></i>
-                Upload
-              </button>";
+              if($userArray[3] == 0){
+                echo 
+                "<button class='upload-button btn btn-light'>
+                  <i class='fa-duotone fa-arrow-up-from-bracket me-2'></i>
+                  Upload
+                </button>";
+              }else {
+                echo 
+                "<button class='view-my-thesis btn btn-light'>
+                  View My Thesis
+                </button>";
+              }
             }
+
             echo 
             "<a class='ms-2' onclick='openNotification()'>
               <i class='fa-solid fa-bell fa-xl'></i>
@@ -360,6 +579,7 @@
               echo "</div>";
             }
           ?> 
+          <br><br><br>
         </div>
         <style>
           
@@ -384,6 +604,8 @@
 
       setTimeout(function(){ x.removeClass('show') }, 3000);
     }
+
+    
   </script>
 </body>
 </html>

@@ -21,6 +21,19 @@
     <title>Upload Thesis - Deposis</title>
 </head>
 <body>
+  <div class="alert-modal">
+    <div class="alert-modal-content">
+      <div class='alert-modal-header'>
+        Alert
+        <i class="close-alert fa-solid fa-xmark"></i>
+      </div>
+      <div class='alert-modal-body'>
+        <p class="alert-message">Upload Complete..</p>
+        <!-- <p class="alert-countdown">Refreshing in <span class="countdown">5</span> secs</p> -->
+      </div>
+    </div>
+  </div>
+  </div>
   <div class="">
     <header>
       <a href='../search'>Back</a>
@@ -47,6 +60,11 @@
         </div>
         <script>
           $(document).ready(function(){
+            $('.close-alert').click(function(){
+              $(this).parent().parent().parent().hide();
+            })
+
+
             $('.author').keyup(function(){
               var author = $('.author').val();
               if(author != ''){
@@ -72,13 +90,12 @@
             
             var selected = x;
             var picture_url = $(this).parents().text()  ;
-            console.log(picture_url)
+            // console.log(picture_url)
             var newElement = "<input value='"+x+"' type='text' placeholder='Type authors name (Lastname, Firstname)' name='authors[]' readonly>";
             $('.author-container').append(newElement)
             $('.message').remove();
             $('.search-proponent').hide();
             $('.author').val('');
-            
           }
           
         </script>
@@ -112,6 +129,8 @@
 
   <script defer>
     $(document).ready(function(){
+      
+
       $('#uploadForm').submit(event => {
         event.preventDefault();
 
@@ -127,7 +146,17 @@
           contentType: false,
           cache: false,
           success: function (data) {
-            console.log(data);
+            $('.alert-modal').css('display', 'flex');
+
+            if(data == 0){
+              $('.alert-message').text('Thesis publication date is out of range.');
+            }
+
+            if(data == 3){
+              $('.alert-message').text('Thesis uploaded successfully.');
+              $('#uploadForm').trigger("reset");
+            }
+            
           }
         })
       })

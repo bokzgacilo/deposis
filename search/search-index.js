@@ -1,9 +1,4 @@
-imgInp.onchange = evt => {
-  const [file] = imgInp.files
-  if (file) {
-    imgInpPreview.src = URL.createObjectURL(file)
-  }
-}
+
 
 var modal = document.getElementById("profilePicture");
 var uploadForm = document.getElementById("uploadForm");
@@ -74,10 +69,21 @@ function showBookmark(){
 }
 
 $(document).ready(function(){
+  imgInp.onchange = evt => {
+    const [file] = imgInp.files
+    if (file) {
+      imgInpPreview.src = URL.createObjectURL(file)
+    }
+  }
+
   showBookmark();
 
   $('.upload-button').click(function(){
     window.location.href = "../upload";
+  })
+
+  $('.view-my-thesis').click(function(){
+    $('#my-thesis').show();
   })
 
   $('.upload-button-mobile').click(function(){
@@ -138,16 +144,37 @@ $(document).ready(function(){
 
 
   $('.search-form').submit(function(event){
-    var search = $("#main-search").val();
+    var search_value = $("#main-search").val();
+
     $.ajax({
       method: 'post',
       url: 'search.php',
       data: {
-        keyword: search
+        keyword: search_value
       },
       success: function(response){
+        console.log(response);
         $('.thesis-result-container').html(response);
         $('#main-search').blur();
+      }
+    })
+
+    event.preventDefault();
+  })
+
+  $('.search-form-web').submit(function(event){
+    var search_value = $("#main-search-web").val();
+
+    $.ajax({
+      method: 'post',
+      url: 'search.php',
+      data: {
+        keyword: search_value
+      },
+      success: function(response){
+        console.log(response);
+        $('.thesis-result-container').html(response);
+        $('#main-search-web').blur();
       }
     })
 

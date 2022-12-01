@@ -245,11 +245,7 @@
   #comments-mobile {
     display: none;
   }
-
   
-
-  
-
   #comments-web {
     animation: grow 0.4s forwards;
     position: fixed;
@@ -261,10 +257,32 @@
     z-index: 3;
   }
 
+  .comment-list  {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 50vh;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
   .comment-body {
     display: flex;
     flex-direction: column;
     padding: 15px 25px 15px 15px;
+  }
+
+  .comment {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .commentor > img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50px;
   }
 
   @keyframes grow {

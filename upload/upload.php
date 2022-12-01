@@ -3,7 +3,6 @@
   session_start();
   
   $authors = implode('%%', $_POST['authors']);
-  echo $authors;      
   $title = $_POST['title'];
   $abstract = $_POST['abstract'];
   $department = $_SESSION['department'];
@@ -12,27 +11,46 @@
   $filename = $_FILES['soft_copy']['name'];
   $temp_name = $_FILES['soft_copy']['tmp_name'];
 
-  $destination = '../files/document/';
-  
-  $docURL = 'files/document/'.$filename;
 
-  move_uploaded_file($temp_name, $destination . $filename);
-  $sql = "INSERT INTO pending (unique_id, title, abstract, authors, department, publication_date, uploaded_date, document_url) 
-          VALUES (
-              $unique_id,
-              '$title',
-              '$abstract',
-              '$authors',
-              '$department',
-              '$publication_date',
-              NOW(),
-              '$docURL'
-          );";
-  if(!$conn -> query($sql)){
-    header('location: index.php?error=upload failed.');
+  $year = date('Y', strtotime($publication_date));
+  if($year < 2015){
+    // Date not valid
+    echo 0;
   }else {
-    header("Location:index.php?upload=success");
-  }
+    $user = $_SESSION['email'];
 
-  $conn -> close();
+    $author_array = explode('%%', $authors);
+    foreach ($author_array as $author) {
+        $conn -> query("UPDATE students SET unique_id='$unique_id' WHERE name='$author'");
+        $conn -> query("UPDATE students SET unique_id='$unique_id' WHERE email='$user'");
+    }
+
+    $destination = '../files/document/';
+    
+    $docURL = 'files/document/'.$filename;
+
+    move_uploaded_file($temp_name, $destination . $filename);
+        
+    $sql = "INSERT INTO pending (unique_id, title, abstract, authors, department, publication_date, status, uploaded_date, document_url) 
+            VALUES (
+                $unique_id,
+                '$title',
+                '$abstract',
+                '$authors',
+                '$department',
+                '$publication_date',
+                'Pending',
+                NOW(),
+                '$docURL'
+            );";
+    if(!$conn -> query($sql)){
+      // Failed
+      echo 2;
+    }else {
+      // Success
+      echo 3;
+    }
+
+    $conn -> close();
+  }
 ?>

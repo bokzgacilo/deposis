@@ -95,7 +95,7 @@
       
     }
   }else {
-    echo "<p class='mt-2'>No results found for '$keyword'</p>";
+    echo "<p class='mt-2 text-center'>No results found for the filter parameters.</p>";
   }
 
   $conn -> close();

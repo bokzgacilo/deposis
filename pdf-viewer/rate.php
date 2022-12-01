@@ -44,7 +44,7 @@
 
   $newDesc = explode('%%', $desc);
   if (strpos($desc, $user) !== false) {
-    echo 'true';
+    echo 1;
   }else {
     UpdateCounter();
     computeAverage($rate);
@@ -58,5 +58,7 @@
     }
 
     $conn -> query("UPDATE approved SET rater='$newline' WHERE unique_id='$target'");
+
+    echo 0;
   }
 ?>

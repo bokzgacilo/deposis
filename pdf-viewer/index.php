@@ -56,6 +56,23 @@
         </div>
       </div>
     </div>
+
+    <div id='comments-web'>
+      <div class="comment-body">
+        <div class="comment-header">
+          <p>Comments</p>
+          <i class="close-web fa-solid fa-x"></i>
+        </div>
+        <div class="comment-list">
+
+        </div>
+        <div id='commentForm'>
+          <input type="text" id="comment-web" value='' placeholder="Post comment">
+          <button id='<?php echo $target;?>' class="btn btn-primary post-web">Post</button>
+        </div>
+      </div>
+    </div>
+
     <header class="top-bar">
       <div class='top-bar-a'>
         <a href='../search/'>
@@ -78,14 +95,7 @@
       </div>
     </header>
 
-    <div id='comments-web'>
-      <div class="comment-body">
-        <div class="comment-header">
-          <p>Comments</p>
-          <i class="close-web fa-solid fa-x"></i>
-        </div>
-      </div>
-    </div>
+    
 
     <div id="rate-modal">
       <div class="rate-modal">
@@ -122,16 +132,17 @@
           type: 'get',
           url: 'getComments.php',
           data: {
-            comments: '<?php echo $document_comments;?>'
+            comments: '<?php echo $document_comments; ?>'
           },
           success: function(response){
             $('.comment-list').html(response);
-            $('#comment').val('');
           }
         })
       }
 
       $(document).ready(function(){
+        getAllComment();
+
         $('.open-rate-button').click(function(){
           $('#rate-modal').css('display', 'flex');
         })
@@ -153,8 +164,12 @@
                 file: <?php echo $target; ?>
               },
               success: function(response){
-                console.log(response);
                 $('#rate-modal').css('display', 'none');
+                if(response == 1){
+                  alert('You already rated this thesis.');
+                }else {
+                  alert('Rate successfully');
+                }
               }
             })
           }
@@ -163,6 +178,7 @@
 
         $('.post').click(function(){
           var comment_value = $('#comment').val();
+
           if(comment_value == ''){
             console.log('no value.');
           }else {
@@ -173,7 +189,34 @@
                 comment: comment_value,
                 file: $(this).attr('id')
               },
-              success: getAllComment()
+              success: function(response){
+                $('.comment-list').html('');
+                $('#comment').val('');
+                alert('Comment Posted');
+                getAllComment();
+              }
+            })
+          }
+        })  
+        $('.post-web').click(function(){
+          var comment_value = $('#comment-web').val();
+
+          if(comment_value == ''){
+            console.log('no value.');
+          }else {
+            $.ajax({
+              type: 'post',
+              url: 'comment.php',
+              data: {
+                comment: comment_value,
+                file: $(this).attr('id')
+              },
+              success: function(response){
+                $('.comment-list').html('');
+                $('#comment-web').val('');
+                // alert('Comment Posted');
+                getAllComment();
+              }
             })
           }
         })  

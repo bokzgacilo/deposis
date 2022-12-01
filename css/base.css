@@ -15,7 +15,7 @@
   --fontBlack: #3c3c3c;
   --bgLightGray: #eeeeee;
   --STIblue-dark: #11376a;
-  --STIblue: #0B5793;
+  --STIblue: #11376a;
   --STIyellow: #f4d03f;
   --lightText: #9c9c9c;
   --microsoft: #eb3c00;
@@ -72,8 +72,8 @@ a {
 @media only screen and (min-width: 415px) {
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
     
   }
 
@@ -84,7 +84,7 @@ a {
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #888; 
+    background: rgb(212, 212, 212); 
     border-radius: 50px;
   }
 

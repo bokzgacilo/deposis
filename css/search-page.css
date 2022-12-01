@@ -1,4 +1,50 @@
 @media only screen and (max-width: 415px) {
+  .my-saved-thesis-mobile {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: rgba(185, 185, 185, 0.319);
+    align-items: center;
+  }
+
+  .my-thesis {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .my-thesis > h6{
+    font-weight: 600;
+  }
+
+  .comembers-mobile {
+    display: grid;
+    /* flex-direction: row; */
+    grid-template-columns: auto auto;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .comembers-mobile > a {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .comembers-mobile > a > p {
+    font-size: 12px;
+  }
+
+  .comembers-mobile > a > img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
+
   .footer-mobile {
     width: 100vw;
     height: 8vh;
@@ -262,6 +308,19 @@
     transition: 0.25s;
   }
 
+  #my-thesis-mobile {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.486);
+    z-index: 11;
+    position: fixed;
+    bottom: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: 0.25s;
+  }
+
   .filter-content {
     display: flex;
     flex-direction: column;
@@ -445,6 +504,14 @@
     margin: 5% auto;
     width: 40%;
   }
+
+  .mod-content-thesis {
+    animation: poppop 0.5s forwards;
+    display: flex;
+    flex-direction: column;
+    margin: 5% auto;
+    width: 60%;
+  }
   
   .mod-content {
     display: flex;
@@ -528,6 +595,10 @@
 
 
 @media only screen and (min-width: 415px) {
+  .my-saved-thesis-mobile {
+    display: none;
+  }
+
   .rate-holder {
     display: flex;
     flex-direction: row;
@@ -595,7 +666,7 @@
     justify-content: center;
   }
   
-  .search-form {
+  .search-form, .search-form-web {
     display: flex;
     flex-direction: row;
     width: 30vw;
@@ -606,6 +677,8 @@
     border-radius: 5px;
     align-items: center;
   }
+
+
 
   .upload-button {
     display: flex;
@@ -636,7 +709,7 @@
   }
 
 
-  .search-form > input {
+  .search-form, .search-form-web > input {
     background-color: transparent;
     outline: none;
     border: none;
@@ -878,9 +951,32 @@
     white-space: nowrap;
     gap: 15px;
   }
+  .comembers {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+    gap: 5px;
+  }
+
+  .comembers > a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #111;
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  .comembers > a > img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
   
   .authors > a {
-    /* margin-right: 15px; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -914,6 +1010,7 @@
     border-bottom-right-radius: 8px;
     border-top: 1px solid #c2cfd6;
     display: flex;
+    align-items: center;
     padding: 5px 15px 5px 25px;
     flex-direction: row;
     background-color: #f0f3f5;
@@ -966,7 +1063,7 @@
   
   
   .mod-header {
-    background-color: var(--STIblue);
+    background-color: var(--STIblue-dark);
     font-size: 18px;
     display: flex;
     flex-direction: row;
@@ -974,6 +1071,19 @@
     align-items: center;
     color: #fff;
     padding: 2%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+  }
+  .mod-header-thesis {
+    background-color: var(--STIblue-dark);
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    padding: 10px 25px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border: none;
@@ -986,7 +1096,24 @@
     margin: 5% auto;
     width: 40%;
   }
+
+  .mod-content-thesis {
+    animation: poppop 0.5s forwards;
+    display: flex;
+    flex-direction: column;
+    margin: 5% auto;
+    width: 70%;
+  }
   
+  table {
+    border-spacing: 30px;
+  }
+
+  td, th {
+    text-align: center;
+    padding: 8px;
+  }
+
   .mod-content {
     animation: poppop 0.6s forwards;
     display: flex;
@@ -1008,6 +1135,18 @@
     border-bottom-right-radius: 10px;
   }
   
+  .mod-message-thesis {
+    background-color: #fff;
+    overflow: auto;
+    padding: 8px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
   .mod-message > img {
     width: 50%;
     border-radius: 8px;
@@ -1021,6 +1160,8 @@
     font-weight: bold;
     cursor: pointer;
   }
+
+  
   
   /* SNACKBAR */
   #snackbar {
@@ -1066,7 +1207,7 @@
     to {bottom: 0; opacity: 0;}
   }
 
-  #filter, .header-mobile, .upload-button-mobile, .footer-mobile {
+  #filter, #my-thesis-mobile, .header-mobile, .upload-button-mobile, .footer-mobile {
     display: none !important;
   }
   
@@ -1086,7 +1227,7 @@
 .mod {
   display: none;
   position: fixed;
-  z-index: 11;
+  z-index: 12;
   left: 0;
   top: 0;
   width: 100%;
@@ -1094,4 +1235,18 @@
   overflow: auto;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4); 
+}
+
+.approved {
+  background-color: rgb(0, 151, 0);
+  padding: 5px;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.pending {
+  background-color: rgb(151, 0, 35);
+  padding: 5px;
+  border-radius: 20px;
+  color: #fff;
 }
