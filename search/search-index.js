@@ -173,6 +173,36 @@ $(document).ready(function(){
     event.preventDefault();
   })
 
+  $('.category').click(function(){
+    var category = $(this).attr('id');
+
+    $.ajax({
+      method: 'post',
+      url: 'category.php',
+      data: {
+        category: category
+      },
+      success: function(response){
+        $('.thesis-result-container').html(response);
+      }
+    })
+  })
+
+  $('.sort').click(function(){
+    var condition = $(this).attr('id');
+
+    $.ajax({
+      method: 'post',
+      url: 'sort.php',
+      data: {
+        condition: condition
+      },
+      success: function(response){
+        $('.thesis-result-container').html(response);
+      }
+    })
+  })
+
   $('.search-form-web').submit(function(event){
     var search_value = $("#main-search-web").val();
 

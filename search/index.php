@@ -524,25 +524,25 @@
       <article>
         <div class="sorter">
           <p>Sort by:</p>
-          <a>A-Z</a>
-          <a>Z-A</a>
-          <a>Newest - Oldest</a>
-          <a>Oldest - Newest</a>
+          <a class="sort" id="fromA">A-Z</a>
+          <a class="sort" id="fromZ">Z-A</a>
+          <a class="sort" id="Newest">Newest - Oldest</a>
+          <a class="sort" id="Oldest">Oldest - Newest</a>
         </div>
         <div class="sorter">
           <p>Category:</p>
           <div class="category-list">
-            <a href="index.php?category=Game">Game <?php 
+            <a class='category' id='Game'>Game <?php 
               $gameCount = $conn -> query("SELECT * FROM approved WHERE category='Game'");
               echo $gameCount -> num_rows;
             ?></a>
-            <a href="index.php?category=Web">Web
+            <a class='category' id='Web'>Web
             <?php 
               $gameCount = $conn -> query("SELECT * FROM approved WHERE category='Web'");
               echo $gameCount -> num_rows;
             ?>
             </a>
-            <a href="index.php?category=Mobile">Mobile
+            <a class='category' id='Mobile'>Mobile
             <?php 
               $gameCount = $conn -> query("SELECT * FROM approved WHERE category='Mobile'");
               echo $gameCount -> num_rows;
