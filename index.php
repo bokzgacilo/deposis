@@ -12,25 +12,14 @@
   <meta name="description" content="Online search engine for thesis of STI Global City.">
   <title>Deposis - Sign In</title>
   <script src="bootstrap 5.2/js/bootstrap.min.js"></script>
+  <script defer src="js/jquery.js"> </script>
   <script defer src="js/script.js"> </script>
   <link rel="shortcut icon" type="image/x-icon" href="files/admin/deposis-icon.ico" />
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/login-page.css">
 </head>
 <body>
-  <header>
-  </header>
-  <main class="container-fluid">
-    <div class="microsoft-login-form">
-      <img src='assets/deposis.png'>
-      <a id='openTAC' href='' class="microsoft-login-button" data-bs-toggle="modal" data-bs-target="#tacModal">
-        <i class="fa-brands fa-windows fa-xl me-2"></i>
-        <span id='button-text'>Sign in using school email</span>
-      </a>
-      <span class="help">Having trouble logging in? <a href=''>Click here</a></span>
-    </div>  
-  </main>
-  <div id="myModal" class="mod">
+<div id="myModal">
     <div class="mod-content">
       <div class="mod-header">
         <p>Terms and Conditions</p>
@@ -135,6 +124,18 @@
         </div>
     </div>
   </div>
+  <header>
+  </header>
+  <main class="container-fluid">
+    <div class="microsoft-login-form">
+      <img src='assets/deposis.png'>
+      <a id='openTAC' class="microsoft-login-button">
+        <i class="fa-brands fa-windows fa-xl me-2"></i>
+        <span id='button-text'>Sign in using school email</span>
+      </a>
+    </div>  
+  </main>
+
 </body>
 </html>
 <?php

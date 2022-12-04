@@ -105,7 +105,7 @@
           </div>
           <p>Number of rates: $rate_count</p>
         </div>
-        <p class='pub_date'>".$thesis['department'].", ".$thesis['publication_date']."</p>
+        <p class='pub_date'>".$thesis['department'].", ".$thesis['publication_date'].", Approved Date:".$thesis['approved_date']."</p>
       </div>";
       }
       echo "</div>";

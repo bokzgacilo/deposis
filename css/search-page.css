@@ -1,4 +1,9 @@
 @media only screen and (max-width: 415px) {
+  #filter-web {
+    display: none !important;
+
+  }
+
   .my-saved-thesis-mobile {
     display: flex;
     flex-direction: column;
@@ -595,6 +600,35 @@
 
 
 @media only screen and (min-width: 415px) {
+  #filter-web {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.766);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    align-items: center;
+    z-index: 12;
+    /* justify-content: center; */
+  }
+
+
+
+  .filter-content {
+    margin-top: 4%;
+    width: 60vw;
+  }
+
+  .filter-header {
+    background-color: var(--STIblue-dark);
+    padding: 10px 25px;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   .my-saved-thesis-mobile {
     display: none;
   }
@@ -1211,6 +1245,72 @@
     display: none !important;
   }
   
+  .sorter {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .sorter > a {
+    width: 8vw;
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    padding: 5px 0;
+    /* padding: 10px; */
+    font-size: 13px;
+    background-color: #fff;
+    border: 1px rgba(0, 0, 0, 0.448) solid;
+    border-radius: 5px;
+  }
+
+  .sorter > a:hover{
+    /* font-weight: 600; */
+    background-color: var(--STIblue-dark);
+    text-decoration: underline !important;
+    color: #fff !important;
+    
+  }
+
+  .open-filter-modal {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    color: gray;
+  }
+
+  .open-filter-modal:hover {
+    text-decoration: underline;
+    color: var(--STIblue-dark);
+  }
+
+  .category-list {
+    display: flex;
+    flex-direction: row;
+    width: 575px;
+    /* max-width: 300px; */
+    overflow-y: hidden;
+    overflow-x: auto;
+    padding: 10px 0;
+    gap: 10px;
+    /* background-color: red; */
+  }
+
+  .category-list > a {
+    /* width: 40px; */
+    cursor: pointer;
+    transition: 0.25s;
+    text-align: center;
+    padding: 5px 15px;
+    font-size: 13px;
+    color: #fff !important;
+    background-color: rgb(6, 144, 43);
+    /* border: 1px black solid; */
+    border-radius: 50px;
+  }
 }
 
 /* Global */

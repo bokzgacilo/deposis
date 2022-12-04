@@ -36,7 +36,7 @@
   </div>
   <div class="">
     <header>
-      <a href='../search'>Back</a>
+      <!-- <a href='../search'>Back</a> -->
       <div class="brand">
         <img src="../files/admin/deposis-white.png">
       </div>       
@@ -113,6 +113,15 @@
         </div>
 
         <div>
+          <p>Select Category:</p>
+          <select name='category'>
+            <option>Game</option>
+            <option>Mobile</option>
+            <option>Web</option>
+          </select>
+        </div>
+
+        <div>
           <p class="group-label">Upload soft copy: </p>
           <input required class='group-input' type="file" name='soft_copy'> 
         </div>
@@ -146,17 +155,17 @@
           contentType: false,
           cache: false,
           success: function (data) {
-            $('.alert-modal').css('display', 'flex');
+            // $('.alert-modal').css('display', 'flex');
 
-            if(data == 0){
-              $('.alert-message').text('Thesis publication date is out of range.');
-            }
+            // if(data == 0){
+            //   $('.alert-message').text('Thesis publication date is out of range.');
+            // }
 
-            if(data == 3){
-              $('.alert-message').text('Thesis uploaded successfully.');
-              $('#uploadForm').trigger("reset");
-            }
-            
+            // if(data == 3){
+            //   $('.alert-message').text('Thesis uploaded successfully.');
+            //   $('#uploadForm').trigger("reset");
+            // }
+            console.log(data)
           }
         })
       })

@@ -7,14 +7,13 @@
   $abstract = $_POST['abstract'];
   $department = $_SESSION['department'];
   $publication_date = $_POST['pubdate'];
+  $category = $_POST['category'];
   $unique_id = rand(00000, 99999);
   $filename = $_FILES['soft_copy']['name'];
   $temp_name = $_FILES['soft_copy']['tmp_name'];
-
-
   $year = date('Y', strtotime($publication_date));
+
   if($year < 2015){
-    // Date not valid
     echo 0;
   }else {
     $user = $_SESSION['email'];
@@ -31,17 +30,19 @@
 
     move_uploaded_file($temp_name, $destination . $filename);
         
-    $sql = "INSERT INTO pending (unique_id, title, abstract, authors, department, publication_date, status, uploaded_date, document_url) 
+    $sql = "INSERT INTO pending (unique_id, title, abstract, authors, department, publication_year, publication_date, status, uploaded_date, document_url, category) 
             VALUES (
                 $unique_id,
                 '$title',
                 '$abstract',
                 '$authors',
                 '$department',
+                '$publication_year',
                 '$publication_date',
                 'Pending',
                 NOW(),
-                '$docURL'
+                '$docURL',
+                '$category'
             );";
     if(!$conn -> query($sql)){
       // Failed

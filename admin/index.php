@@ -125,6 +125,7 @@
       <?php
         if($_SESSION['role'] != 'Coordinator'){
           echo "
+          <a href='../blank-template.xlsx' >Download Blank Temaplatec</a>
           <a class='generate-report' >
             <i class=' fa-solid fa-file-export me-2'></i>
             <span id='button-text'>Generate Report</span>
@@ -145,6 +146,7 @@
         }
       if($_SESSION['role'] == 'Coordinator'){
         echo "
+        <a href='../blank-template.xlsx' > Download Blank Template</a>
         <a class='add-single'>
           <i class='fa-solid fa-plus me-2'></i>
           <span id='button-text'>Add Single Data (Student)</span>

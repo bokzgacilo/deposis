@@ -210,6 +210,32 @@
     </div>
   </div>
 
+  <div id="filter-web">
+    <div class="filter-content">
+      <div class="filter-header">
+        <p>Filter</p>
+        <i class="close fa-solid fa-xmark"></i>
+      </div>
+      <form class="filter-form">
+        <input type="text" id='keyword' name='keyword' value="" placeholder="Keyword">
+        <p>Select Department: </p>
+        <select id='department'>
+          <option value=''>All</option>
+          <option value="BSIT">BSIT</option>
+          <option value="BSIS">BSIS</option>
+          <option value="BACOMM">BACOMM</option>
+          <option value="THM">THM</option>
+          <option value="BSCOE">BSCOE</option>
+        </select>
+        <p>From: </p>
+        <input type="date" value="" name="date_from">
+        <p>To: </p>
+        <input type="date" value="" name="date_to">
+        <button class="go-filter">Filter</button>
+      </form>
+    </div>
+  </div>
+
   <div id="filter">
     <div class="filter-content">
       <div class="filter-header">
@@ -321,7 +347,6 @@
                     
                     echo "
                     </div>
-                   
                     <p>Department</p>
                     <h6>".$own['department']."</h6>
 
@@ -444,7 +469,9 @@
         <form class="search-form-web">
           <i class="fa-solid fa-magnifying-glass "></i>
           <input type="search" id='main-search-web' value='' placeholder='Start searching..'>
+          <a class="open-filter-modal">Filter</a>
         </form>
+
         <div class="action-buttons">
         <?php
             if($_SESSION['email'] == 'Guest'){
@@ -495,6 +522,35 @@
       <aside>
       </aside>
       <article>
+        <div class="sorter">
+          <p>Sort by:</p>
+          <a>A-Z</a>
+          <a>Z-A</a>
+          <a>Newest - Oldest</a>
+          <a>Oldest - Newest</a>
+        </div>
+        <div class="sorter">
+          <p>Category:</p>
+          <div class="category-list">
+            <a href="index.php?category=Game">Game <?php 
+              $gameCount = $conn -> query("SELECT * FROM approved WHERE category='Game'");
+              echo $gameCount -> num_rows;
+            ?></a>
+            <a href="index.php?category=Web">Web
+            <?php 
+              $gameCount = $conn -> query("SELECT * FROM approved WHERE category='Web'");
+              echo $gameCount -> num_rows;
+            ?>
+            </a>
+            <a href="index.php?category=Mobile">Mobile
+            <?php 
+              $gameCount = $conn -> query("SELECT * FROM approved WHERE category='Mobile'");
+              echo $gameCount -> num_rows;
+            ?>
+            </a>
+          </div>
+        </div>
+
         <div class="thesis-result-container">
           <?php
             while($thesis = $theses -> fetch_array()){
@@ -524,6 +580,7 @@
                 }
               echo "</div>
                 <p>".$thesis['abstract']."</p>
+                <p>Approved on: ".$thesis['approved_date']."</p>
               </div>";
 
               if(isset($_SESSION['role'])){

@@ -128,11 +128,15 @@
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <script>
       function getAllComment(){
+        $('.comment-list').html('');
+
+        var documments = '<?php echo $document_comments; ?>';
+
         $.ajax({
           type: 'get',
           url: 'getComments.php',
           data: {
-            comments: '<?php echo $document_comments; ?>'
+            comments: documments
           },
           success: function(response){
             $('.comment-list').html(response);
@@ -142,6 +146,17 @@
 
       $(document).ready(function(){
         getAllComment();
+        // $.ajax({
+        //   type: 'get',
+        //   url: 'getComments.php',
+        //   data: {
+        //     comments: documments
+        //   },
+        //   success: function(response){
+        //     $('.comment-list').html(response);
+        //   }
+        // })
+        // getAllComment();
 
         $('.open-rate-button').click(function(){
           $('#rate-modal').css('display', 'flex');
@@ -190,9 +205,9 @@
                 file: $(this).attr('id')
               },
               success: function(response){
-                $('.comment-list').html('');
-                $('#comment').val('');
-                alert('Comment Posted');
+                // $('.comment-list').html('');
+                // $('#comment').val('');
+                // alert('Comment Posted');
                 getAllComment();
               }
             })
@@ -212,10 +227,13 @@
                 file: $(this).attr('id')
               },
               success: function(response){
-                $('.comment-list').html('');
+                // $('.comment-list').html('');
                 $('#comment-web').val('');
-                // alert('Comment Posted');
-                getAllComment();
+                if(response == 0){
+                  alert('Invalid comment - has bad words. ');
+                }else {
+                  // getAllComment();
+                }
               }
             })
           }
