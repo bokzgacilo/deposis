@@ -1,12 +1,12 @@
 <?php
   session_start();
 
-  if(!isset($_SESSION['email']) && $_SESSION['role'] != 'Admin'){
-    header("location: ../search/index.php?denied=Sorry, you don't have enough priveleges to access this panel.");
-  }else { 
+  
+  if(preg_match("/(Admin|Coordinator)/i", $_SESSION['role'])){
     $table = '';
 
     if(!isset($_GET['page'])){
+
       if($_SESSION['role'] == 'Coordinator'){
         header('location: index.php?page=students');
       }
@@ -14,9 +14,13 @@
       if($_SESSION['role'] == 'Admin'){
         header('location: index.php?page=faculty');
       }
+
     }else {
       $table = $_GET['page'];
     }
+  }else {
+    header('location: ../search/index.php?error=Access Denied');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -249,6 +253,3 @@
   </div>
 </body>
 </html>
-<?php
-}
-?>

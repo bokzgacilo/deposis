@@ -4,6 +4,10 @@
 
   }
 
+  .loader-background {
+    display: none;
+  }
+
   .my-saved-thesis-mobile {
     display: flex;
     flex-direction: column;
@@ -612,7 +616,6 @@
     z-index: 12;
     /* justify-content: center; */
   }
-
 
 
   .filter-content {

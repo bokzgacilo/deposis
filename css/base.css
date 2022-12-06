@@ -72,7 +72,7 @@ a {
 @media only screen and (min-width: 415px) {
 /* width */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
     height: 5px;
     
   }

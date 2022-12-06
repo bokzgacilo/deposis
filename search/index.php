@@ -374,14 +374,19 @@
         <?php
           $getNotification = "SELECT notifications FROM $usertable WHERE email='".$_SESSION['email']."'";
           $notification = $conn -> query($getNotification);
-          
-          while($row = $notification -> fetch_array()){
-            $notif = explode("%%", $row['notifications']);
-            echo "<div class='notification'>
-            <p>".$notif['0']."</p>
-            <p>".$notif['1']."</p>
-            </div>";
+            
+          if(($notification -> num_rows) > 0){
+            echo 'No notifications';
+          }else {
+            while($row = $notification -> fetch_array()){
+              $notif = explode("%%", $row['notifications']);
+              echo "<div class='notification'>
+              <p>".$notif['0']."</p>
+              <p>".$notif['1']."</p>
+              </div>";
+            }
           }
+          
           
         ?>
       </div>
@@ -519,6 +524,7 @@
       <i onclick='openBookmark()' class='fa-solid fa-book-bookmark fa-xl'></i>
     </div>
     <div class="wrapper">
+      <!-- <div class="loader-background"></div> -->
       <aside>
       </aside>
       <article>
